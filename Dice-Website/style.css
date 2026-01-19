@@ -1,0 +1,146 @@
+/* Import a clean Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Rich gradient background */
+    background: linear-gradient(135deg, #a6ec9e 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #2d3436;
+}
+
+#container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 95%;
+    max-width: 450px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #2d3436;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Input and Label Group */
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #636e72;
+}
+
+input[type="number"] {
+    padding: 10px;
+    width: 65px;
+    border: 2px solid #dfe6e9;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="number"]:focus {
+    border-color: #764ba2;
+    box-shadow: 0 0 8px rgba(118, 75, 162, 0.2);
+}
+
+/* Button Styling */
+button {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(45deg, #ff4757, #ff6b81);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+    filter: brightness(1.05);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Result Text */
+#diceResult {
+    margin-top: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #764ba2;
+    min-height: 1.5em; /* Prevents layout jump */
+}
+
+/* Dice Container and Images */
+#diceImages {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+#diceImages img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.15));
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#diceImages img:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Animation Classes (Triggered via JS) */
+.roll-animation {
+    animation: spin 0.6s ease-out forwards;
+}
+
+@keyframes spin {
+    0% { 
+        transform: rotate(-180deg) scale(0);
+        opacity: 0;
+    }
+    70% {
+        transform: rotate(20deg) scale(1.1);
+    }
+    100% { 
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
