@@ -11,8 +11,10 @@ let cScore = 0;
 
 function playGame(playerChoice){
     const computerChoice = options[Math.floor(Math.random() * 3)];
-
     console.log(computerChoice);
+
+    player.textContent = playerChoice;
+    computer.textContent = computerChoice;
 
     if(playerChoice === "rock"){
         if(playerChoice === computerChoice){

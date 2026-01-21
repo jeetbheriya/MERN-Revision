@@ -98,8 +98,8 @@ h1 {
     text-align: left;
 }
 
-#playerDisplay::before { content: "[USER.INPUT]: "; opacity: 0.6; font-size: 0.9rem; }
-#computerDisplay::before { content: "[CPU.PROCESS]: "; opacity: 0.6; font-size: 0.9rem; }
+#playerDisplay::before { content: "Player : "; opacity: 0.6; font-size: 0.9rem; }
+#computerDisplay::before { content: "Computer : "; opacity: 0.6; font-size: 0.9rem; }
 
 #resultDisplay {
     margin-top: 30px;
