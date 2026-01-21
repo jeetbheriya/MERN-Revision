@@ -1,0 +1,55 @@
+#my-button {
+    /* 1. Layout & Sizing */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    min-width: 120px;
+    
+    /* 2. Typography */
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #1e293b;
+    letter-spacing: -0.01em;
+    
+    /* 3. Background & Border */
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    
+    /* 4. Shadow & Transition */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* 5. Interaction Prevention */
+    user-select: none;
+    outline: none;
+}
+
+/* Hover State: Subtle lift and focus */
+#my-button:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Active State: Pressed effect */
+#my-button:active {
+    background-color: #f1f5f9;
+    transform: translateY(0);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* Focus State: Accessibility ring */
+#my-button:focus-visible {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.enabled{
+    background-color: #b5d1f3;
+    color: #0c3a84;
+}

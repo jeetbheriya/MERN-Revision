@@ -1,0 +1,189 @@
+/* -------------------------------------------------------------------------- */
+/* GLOBAL SETUP & DIGITAL GRID                                                */
+/* -------------------------------------------------------------------------- */
+body {
+    background-color: #050505;
+    background-image: 
+        linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px; 
+    color: #00ff41;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* CRT Scanline Effect Overlay */
+body::before {
+    content: " ";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* -------------------------------------------------------------------------- */
+/* HEADER WITH GLITCH                                                         */
+/* -------------------------------------------------------------------------- */
+h1 {
+    text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    position: relative;
+    animation: textGlitch 5s infinite;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+@keyframes textGlitch {
+    0%, 100% { transform: none; opacity: 1; }
+    92% { transform: skew(2deg); opacity: 0.8; }
+    94% { transform: skew(-3deg); opacity: 0.9; }
+    96% { transform: none; opacity: 1; }
+}
+
+/* -------------------------------------------------------------------------- */
+/* BUTTONS: ANGLED & GLOWING                                                  */
+/* -------------------------------------------------------------------------- */
+#choices {
+    display: flex;
+    gap: 30px;
+    z-index: 5;
+    margin-bottom: 40px;
+}
+
+#choices button {
+    background: rgba(0, 255, 65, 0.05);
+    border: 2px solid #00ff41;
+    color: #00ff41;
+    width: 120px;
+    height: 120px;
+    font-size: 3.5rem;
+    cursor: pointer;
+    position: relative;
+    clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
+    transition: 0.2s ease;
+    box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#choices button:hover {
+    background: #00ff41;
+    box-shadow: 0 0 40px #00ff41;
+    transform: scale(1.1) skewX(-2deg);
+}
+
+/* -------------------------------------------------------------------------- */
+/* DISPLAY LINES (CHOICES & RESULTS)                                          */
+/* -------------------------------------------------------------------------- */
+#playerDisplay, #computerDisplay {
+    font-size: 1.5rem;
+    margin: 5px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 450px;
+    text-align: left;
+}
+
+#playerDisplay::before { content: "[USER.INPUT]: "; opacity: 0.6; font-size: 0.9rem; }
+#computerDisplay::before { content: "[CPU.PROCESS]: "; opacity: 0.6; font-size: 0.9rem; }
+
+#resultDisplay {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+    font-weight: bold;
+    height: 60px;
+    text-align: center;
+    text-shadow: 0 0 15px #00ff41;
+    border-top: 1px solid rgba(0, 255, 65, 0.3);
+    padding-top: 10px;
+    width: 500px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* SCORE DISPLAYS (TERMINAL BOX STYLE)                                        */
+/* -------------------------------------------------------------------------- */
+#playerScore, #computerScore {
+    border: 1px solid #00ff41;
+    background: rgba(0, 255, 65, 0.05);
+    padding: 12px 20px;
+    margin-top: 10px;
+    width: 410px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    animation: flicker 3s infinite;
+}
+
+#playerScore::before { content: "> PLAYER_SCORE: "; }
+#computerScore::before { content: "> COMPTR_SCORE: "; }
+
+@keyframes flicker {
+    0%, 19.9%, 22%, 62.9%, 64%, 64.9%, 70%, 100% { opacity: 1; }
+    20%, 21.9%, 63%, 63.9%, 65%, 69.9% { opacity: 0.4; }
+}
+
+/* -------------------------------------------------------------------------- */
+/* DYNAMIC RESULT COLORS (Apply these via JS)                                 */
+/* -------------------------------------------------------------------------- */
+.winText { color: #00ff41; text-shadow: 0 0 20px #00ff41; }
+.loseText { color: #ff003c; text-shadow: 0 0 20px #ff003c; }
+.tieText { color: #ffcc00; text-shadow: 0 0 20px #ffcc00; }
+
+/* -------------------------------------------------------------------------- */
+/* RESET BUTTON: SYSTEM OVERRIDE                                              */
+/* -------------------------------------------------------------------------- */
+#reset-game {
+    margin-top: 40px;
+    background: transparent;
+    border: 1px solid #ff003c; /* Red border for "Danger/Reset" */
+    color: #ff003c;
+    padding: 10px 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    z-index: 5;
+    /* Angled corners to match the other buttons */
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+}
+
+#reset-game:hover {
+    background: #ff003c;
+    color: #050505;
+    box-shadow: 0 0 20px #ff003c;
+    transform: translateY(-2px);
+}
+
+#reset-game:active {
+    transform: translateY(1px);
+    filter: brightness(0.8);
+}
+
+/* Subtle pulse effect to make it look active */
+@keyframes pulseRed {
+    0% { box-shadow: 0 0 5px #ff003c; }
+    50% { box-shadow: 0 0 15px #ff003c; }
+    100% { box-shadow: 0 0 5px #ff003c; }
+}
+
+#reset-game {
+    animation: pulseRed 2s infinite;
+}
