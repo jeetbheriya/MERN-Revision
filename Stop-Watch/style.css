@@ -1,5 +1,5 @@
-/* Import a tech-focused monospaced font */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Poppins:wght@400;600&display=swap');
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Poppins:wght@400;600;700&display=swap');
 
 * {
     margin: 0;
@@ -14,119 +14,148 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Poppins', sans-serif;
+    overflow: hidden;
     
-    /* BACKGROUND PREPARATION */
-    background: #121212; /* Dark fallback */
-    background-image: url('assets/digital-clock.jpg'); /* Place your URL here later */
+    /* BACKGROUND SETTINGS */
+    background-color: #121212; /* Fallback */
+    background-image: url('assets/digital-clock2.jpg'); 
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
 }
 
+/* Enhanced Dark Overlay - Ensuring it stays behind content */
 body::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Darkens the image by 40% */
-    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg, 
+        rgba(0, 0, 0, 0.7) 0%, 
+        rgba(0, 0, 0, 0.3) 100%
+    );
+    z-index: 1; 
+}
+
+/* Ensure all content sits above the background overlay */
+h1, #container {
+    position: relative;
+    z-index: 2;
 }
 
 h1 {
-    color: white;
-    font-size: 3rem;
+    color: #ffffff;
+    font-size: clamp(2rem, 8vw, 3.5rem); /* Fluid typography */
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 8px;
-    margin-bottom: 20px;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    letter-spacing: 12px;
+    margin-bottom: 30px;
+    text-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
 
 #container {
-    /* Glassmorphism Effect */
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    /* Glassmorphism Upgrade */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     
-    padding: 3rem;
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    padding: 4rem 3rem;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
     text-align: center;
     width: 90%;
-    max-width: 500px;
+    max-width: 600px;
+    transition: transform 0.3s ease;
 }
 
 /* Timer Display */
 #display {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 4.5rem;
+    font-size: clamp(2.5rem, 10vw, 5rem); /* Scales with screen size */
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 30px;
-    /* Prevents the numbers from jumping around */
+    margin-bottom: 40px;
     font-variant-numeric: tabular-nums;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    letter-spacing: -2px;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
 /* Controls Layout */
 #control {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 button {
-    padding: 12px 25px;
-    font-size: 1rem;
-    font-weight: 600;
+    padding: 15px 35px;
+    font-size: 0.9rem;
+    font-weight: 700;
     border: none;
-    border-radius: 12px;
+    border-radius: 16px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     text-transform: uppercase;
-    min-width: 100px;
+    letter-spacing: 2px;
+    min-width: 130px;
     color: white;
+    outline: none;
 }
 
-/* Button specific colors */
+/* Button Colors & Glows */
 #startBtn {
-    background-color: #2ecc71;
-    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3);
 }
 
 #startBtn:hover {
-    background-color: #27ae60;
-    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(46, 204, 113, 0.5);
 }
 
 #stopBtn {
-    background-color: #e74c3c;
-    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
 }
 
 #stopBtn:hover {
-    background-color: #c0392b;
-    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(231, 76, 60, 0.5);
 }
 
 #resetBtn {
-    background-color: #3498db;
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
 }
 
 #resetBtn:hover {
-    background-color: #2980b9;
-    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(52, 152, 219, 0.5);
 }
 
 button:active {
-    transform: scale(0.95);
+    transform: translateY(1px) scale(0.98);
 }
 
-/* Mobile Adjustments */
-@media (max-width: 500px) {
-    #display { font-size: 2.8rem; }
-    h1 { font-size: 2rem; }
-    #control { flex-direction: column; }
-    button { width: 100%; }
+/* Media Queries for perfection on small screens */
+@media (max-width: 600px) {
+    #container {
+        padding: 2.5rem 1.5rem;
+    }
+    
+    #control {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+    
+    #resetBtn {
+        grid-column: span 2; /* Reset button takes full width on bottom */
+    }
 }
