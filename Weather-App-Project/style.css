@@ -1,0 +1,112 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #e9f5db 0%, #cfe1b9 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Form Styling */
+.weatherForm {
+    margin-bottom: 30px;
+    background: white;
+    padding: 8px;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    display: flex;
+}
+
+.cityInput {
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    width: 220px;
+    background: transparent;
+}
+
+button[type="submit"] {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 50px;
+    background: #718355;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* FIXED BENTO GRID */
+/* FIXED BENTO GRID */
+.card {
+    display: grid !important; /* Force grid even after JS updates */
+    grid-template-columns: repeat(2, 170px); 
+    grid-template-rows: auto auto auto; 
+    gap: 15px;
+    padding: 25px;
+    background: #f7fcf0;
+    border-radius: 40px;
+    box-shadow: 20px 20px 40px #b5c99a, -20px -20px 40px #ffffff;
+    width: fit-content; /* Keeps it tight like Miami */
+    margin-top: 20px;
+}
+
+/* Ensure children behave like tiles */
+.card > * {
+    background: white;
+    padding: 15px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Specific Tile Positioning */
+.cityDisplay {
+    grid-column: span 2; /* Takes full top row */
+    color: #718355;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+}
+
+.tempDisplay {
+    grid-row: span 2; /* Takes full left side height */
+    font-size: 3rem;
+    font-weight: 800;
+    color: #43523d;
+}
+
+.weatherEmoji {
+    font-size: 3.5rem;
+}
+
+.humidDisplay {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.descDisplay {
+    grid-column: span 2; /* Takes full bottom row */
+    background: #43523d;
+    color: #f7fcf0;
+    font-weight: 600;
+}
+
+/* Error Message Fix */
+.errorDisplay {
+    grid-column: span 2;
+    color: #d63031;
+    background: #fff0f0;
+    border: 1px solid #ffcccc;
+}
