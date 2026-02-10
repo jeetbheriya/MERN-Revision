@@ -1,4 +1,5 @@
-const result = document.getElementById('passwordDisplay');
+const content=document.getElementById('passwordDisplay');
+const btn=document.getElementById('generateBtn');
 
 function generatePassword(passwordLength, uppercaseChars, lowercaseChars, numberChars, specialChars) {
     const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -25,6 +26,7 @@ function generatePassword(passwordLength, uppercaseChars, lowercaseChars, number
         const randomIndex = Math.floor(Math.random() * allowedChars.length);
         password += allowedChars[randomIndex];
     }
+    console.log(`Generated Password : ${password}`);
     return password;
 }
 
@@ -40,4 +42,9 @@ const password = generatePassword(passwordLength,
                                   numberChars, 
                                   specialChars);
 
-console.log(`Generated Password : ${password}`);
+
+
+btn.addEventListener("click", () => {
+    content.innerHTML=password;
+})
+
