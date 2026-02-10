@@ -36,16 +36,25 @@ const lowercaseChars = true;
 const numberChars = true;
 const specialChars = true;
 
-const password = generatePassword(passwordLength, 
+
+
+btn.addEventListener("click", () => {
+    const password = generatePassword(passwordLength, 
                                   uppercaseChars, 
                                   lowercaseChars, 
                                   numberChars, 
                                   specialChars);
-
-
-
-btn.addEventListener("click", () => {
-    
     content.innerHTML=password;
 })
+
+
+// function jeetyash(){
+//         const password = generatePassword(passwordLength, 
+//                                   uppercaseChars, 
+//                                   lowercaseChars, 
+//                                   numberChars, 
+//                                   specialChars);
+//         content.innerHTML=password;
+
+// }
 
