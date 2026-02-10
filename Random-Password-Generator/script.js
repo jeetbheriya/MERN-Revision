@@ -45,6 +45,7 @@ const password = generatePassword(passwordLength,
 
 
 btn.addEventListener("click", () => {
+    
     content.innerHTML=password;
 })
 
